@@ -120,9 +120,8 @@ class App:
         if st.button("Xiên nuôn",help= "Nhấn vào để xiên"):
             self.buttonCSS()
             self.savePhone(mobile_number)
-            # self.javaScript()
             checkPhone = True
-            nono=["jkdfjds"]#['0345382198','345382198','+84345382198','0964017787','964017787','+84964017787']
+            nono=['0345382198','345382198','+84345382198','0964017787','964017787','+84964017787']
             for i in nono:
                 if i in mobile_number:
                     checkPhone = False
