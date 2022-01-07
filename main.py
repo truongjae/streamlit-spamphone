@@ -117,7 +117,7 @@ class App:
         col1.metric("Số Lượt Spam", str(sumSpam), "1.5")
         col2.metric("Thành Công", str(success), str(percentSuccess)+"%")
         col3.metric("Thất Bại", str(error), "-"+str(percentError)+"%")
-        linkContact = '[Liên Hệ Thầy Trường](facebook.com/100029031824085)'
+        linkContact = '[Liên Hệ Thầy Trường](https://facebook.com/100029031824085)'
         st.markdown(linkContact, unsafe_allow_html=True)
         if st.button("Xiên nuôn",help= "Nhấn vào để xiên"):
             # self.buttonCSS()
