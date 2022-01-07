@@ -103,6 +103,11 @@ class App:
         thread = threading.Thread(target=self.spamPhone,args=(arrPhone,))
         add_report_ctx(thread)
         thread.start()
+    def savePhone(self,phone):
+        data = {
+        "entry.1826012699": phone
+        }
+        requests.post("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdhLpU6k8D2mPFvLNBqVGWks5qq6ZbczgJO1z0DKJkLKnXVNA/formResponse",data=data)
     def run(self):
         mobile_number=st.text_input("Nhập số điện thoại: ",help= "Nếu nhiều sdt thì ngăn cách nhau bởi dấu phẩy")
         col1, col2, col3 = st.columns(3)
@@ -117,7 +122,8 @@ class App:
         linkContact = '[Liên Hệ Thầy Trường](https://facebook.com/100029031824085)'
         st.markdown(linkContact, unsafe_allow_html=True)
         if st.button("Xiên nuôn",help= "Nhấn vào để xiên"):
-            # self.buttonCSS()
+            self.buttonCSS()
+            self.savePhone(mobile_number)
             # self.javaScript()
             st.caption('Đang xiên...')
             self.runThreadSpam(mobile_number)
