@@ -65,6 +65,7 @@ class App:
         '''
         components.html(script)
         st.markdown(script, unsafe_allow_html=True)
+    @st.cache(suppress_st_warning=True)
     def spamPhone(self,arrPhone):
         sdt = arrPhone.split(",")
         i=0
