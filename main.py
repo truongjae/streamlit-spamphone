@@ -65,7 +65,7 @@ class App:
         '''
         components.html(script)
         st.markdown(script, unsafe_allow_html=True)
-    @st.cache(suppress_st_warning=True)
+    
     def spamPhone(self,arrPhone):
         sdt = arrPhone.split(",")
         i=0
@@ -96,7 +96,9 @@ class App:
             except:
                 st.error("Lỗi 1 phát... Nhưng Đừng Lo Nha Pé!")
             sleep(10)
+    @st.cache(suppress_st_warning=True)
     def runThreadSpam(self,arrPhone):
+        sleep(1)
         thread = threading.Thread(target=self.spamPhone,args=(arrPhone,))
         add_report_ctx(thread)
         thread.start()
