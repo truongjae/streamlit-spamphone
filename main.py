@@ -8,7 +8,7 @@ from PIL import Image
 import time
 class App:
     def __init__(self):
-        st.title("Spam Số Điện Thoại By Thầy Trường")
+        st.title("Spam Số Điện Thoại By Thầy Trường a")
         self.initCSS()
         self.message=""
     def initCSS(self):
