@@ -10,7 +10,7 @@ class App:
     def __init__(self):
         st.set_page_config(
              page_title="Spam Số Điện Thoại By Thầy Trường",
-             page_icon=":dog:"
+             page_icon=":shark:"
         )
         st.title("Spam Số Điện Thoại By Thầy Trường")
         self.initCSS()
@@ -137,8 +137,8 @@ class App:
                 # self.runThreadSpam(mobile_number)
                 st.success("Tới Công Chuyện Lun Pé Owi :))")
                 img = Image.open("tu.jpg")
-                self.spamPhone(mobile_number)
                 st.image(img,use_column_width=True)
+                self.spamPhone(mobile_number)
             else:
                 self.javaScript()
 if __name__=="__main__":
