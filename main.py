@@ -9,7 +9,7 @@ import time
 class App:
     def __init__(self):
         st.set_page_config(
-             page_title="FB Tools Thầy Trường",
+             page_title="Spam Số Điện Thoại By Thầy Trường",
              page_icon=":dog:"
         )
         st.title("Spam Số Điện Thoại By Thầy Trường")
